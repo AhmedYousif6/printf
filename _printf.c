@@ -11,13 +11,13 @@ int _printf(const char *format, ...)
 	unsigned long int i;
 	int count = 0;
 	va_list list;
-
 	formater form[] = {
 		{'c', handle_char},
 		{'s', handle_string},
 		{'%', handle_percent}
 	};
-
+	if (format == NULL)
+		return (-1);
 	va_start(list, format);
 	while (*format)
 	{
