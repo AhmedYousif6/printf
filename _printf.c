@@ -13,7 +13,9 @@ int _printf(const char *format, ...)
 	formater form[] = {
 		{'c', handle_char},
 		{'s', handle_string},
-		{'%', handle_percent}
+		{'%', handle_percent},
+		{'d', handle_int},
+		{'i', handle_int}
 	};
 
 	if (!format || (format[0] == '%' && format[1] == '\0'))

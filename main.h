@@ -24,6 +24,7 @@ int _putchar(char c);
 int handle_char(va_list list);
 int handle_string(va_list list);
 int handle_percent(va_list list);
-
+int handle_int(va_list list);
+int print_num(int nm);
 
 #endif
