@@ -73,6 +73,7 @@ int handle_string(va_list list)
 
 int handle_percent(va_list list)
 {
+	(void)list;
 	_putchar('%');
 	return (1);
 }
