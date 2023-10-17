@@ -15,7 +15,8 @@ int handle_format(const char *format, va_list list)
 		{'%', handle_percent},
 		{'d', handle_int},
 		{'i', handle_int},
-		{'b', handle_bin}
+		{'b', handle_bin},
+		{'\0', handle_custom}
 	};
 	unsigned int i;
 
@@ -69,5 +70,28 @@ int handle_bin(va_list list)
 
 	nm = va_arg(list, unsigned int);
 	count += print_bin(nm);
+	return (count);
+}
+
+
+
+/**
+ * handle_custom - handle unrecognize specifier.
+ * @list: argument.
+ * Return: count of printed chars
+*/
+
+int handle_custom(va_list list)
+{
+	const char *custr;
+	int count = 0;
+
+	custr = va_arg(list, const char *);
+	while (*custr != '\0')
+	{
+		_putchar(*custr);
+		custr++;
+		count++;
+	}
 	return (count);
 }
