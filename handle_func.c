@@ -1,0 +1,73 @@
+#include "main.h"
+
+/**
+ * handle_format - handle format specifiers.
+ * @format: takes specifier.
+ * @list: argument.
+ * Return: num of printed bites.
+*/
+
+int handle_format(const char *format, va_list list)
+{
+	formater form[] = {
+		{'c', handle_char},
+		{'s', handle_string},
+		{'%', handle_percent},
+		{'d', handle_int},
+		{'i', handle_int},
+		{'b', handle_bin}
+	};
+	unsigned int i;
+
+	for (i = 0; i < sizeof(form) / sizeof(form[0]); i++)
+	{
+		if (*format == form[i].s)
+		{
+			return (form[i].callf(list));
+		}
+	}
+	_putchar('%');
+	_putchar(*format);
+	return (2);
+
+}
+
+
+
+/**
+ * handle_int - handle i and d spesifiers
+ * @list: passed argument
+ * Return: number of printed
+ */
+
+int handle_int(va_list list)
+{
+	int nm, count = 0;
+
+	nm = va_arg(list, int);
+	if (nm < 0)
+	{
+		_putchar('-');
+		count++;
+		nm = -nm;
+	}
+	count += print_num(nm);
+	return (count);
+}
+
+
+/**
+ * handle_bin - handle binary.
+ * @list: argument.
+ * Return: count of printed.
+ */
+
+int handle_bin(va_list list)
+{
+	int count = 0;
+	unsigned int nm;
+
+	nm = va_arg(list, unsigned int);
+	count += print_bin(nm);
+	return (count);
+}
