@@ -15,18 +15,16 @@ int _putchar(char c)
 /**
  * handle_char - prints a character
  * @list: argument to print
- * @count: track the number of printed character.
  * Return: number of printed characters
 */
 
-int *handle_char(va_list list, int *count)
+int handle_char(va_list list)
 {
-	char c;
+	int c;
 
-	c = (char)va_arg(list, int);
+	c = va_arg(list, int);
 	_putchar(c);
-	(*count)++;
-	return (count);
+	return (1);
 }
 
 
@@ -34,35 +32,47 @@ int *handle_char(va_list list, int *count)
 /**
  * handle_string - prints a string
  * @list: argument to print
- * @count: the number of printed characters
  * Return: number of printed characters
 */
 
-int *handle_string(va_list list, int *count)
+int handle_string(va_list list)
 {
-	char *str;
+	const char *str;
+	const char *ns;
+	int count = 0;
 
-	str = va_arg(list, char *);
-	while (*str)
+	str = va_arg(list, const char *);
+	if (str != NULL)
 	{
-		_putchar(*str);
-		str++;
-		(*count)++;
+		while (*str)
+		{
+			_putchar(*str);
+			count++;
+			str++;
+		}
 	}
+	else
+	{
+		ns = "(null)";
+		while (*ns)
+		{
+			_putchar(*ns);
+			count++;
+			ns++;
+		}
+	}
+
 	return (count);
 }
 
 /**
  * handle_percent - prints %
  * @list: argument
- * @count: number of printed characters
  * Return: number of printed characters
 */
 
-int *handle_percent(va_list list, int *count)
+int handle_percent(va_list list)
 {
-	(void)list;
 	_putchar('%');
-	(*count)++;
-	return (count);
+	return (1);
 }

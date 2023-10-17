@@ -8,37 +8,43 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned long int i;
-	int count = 0;
+	unsigned int i, count = 0;
 	va_list list;
 	formater form[] = {
 		{'c', handle_char},
 		{'s', handle_string},
 		{'%', handle_percent}
 	};
-	if (format == NULL)
+
+	if (!format || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 	va_start(list, format);
-	while (*format)
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-		for (i = 0; i < sizeof(form) / sizeof(form[0]); i++)
-		{
-			if (*format == form[i].s)
+			for (i = 0; i < sizeof(form) / sizeof(form[0]); i++)
 			{
-				form[i].callf(list, &count);
-				break;
+				if (*format == form[i].s)
+				{
+					count += form[i].callf(list);
+					break;
+				}
 			}
-		}
+				if (i == sizeof(form) / sizeof(form[0]))
+				{
+					_putchar('%');
+					_putchar(*format);
+					count += 2;
+				}
 		}
 		else
 		{
-			_putchar(*format);
-			count++;
+			count += _putchar(*format);
 		}
 		format++;
+		count++;
 	}
 	va_end(list);
 	return (count);

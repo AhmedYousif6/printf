@@ -15,15 +15,15 @@
 typedef struct specifier
 {
 	char s;
-	int* (*callf)(va_list, int *);
+	int (*callf)(va_list);
 } formater;
 
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int *handle_char(va_list list, int *count);
-int *handle_string(va_list list, int *count);
-int *handle_percent(va_list list, int *count);
+int handle_char(va_list list);
+int handle_string(va_list list);
+int handle_percent(va_list list);
 
 
 #endif
