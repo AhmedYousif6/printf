@@ -36,7 +36,7 @@ int handle_format(const char *format, va_list list)
 
 
 /**
- * handle_int - handle i and d spesifiers
+ * handle_int - handle integers
  * @list: passed argument
  * Return: number of printed
  */
@@ -46,13 +46,7 @@ int handle_int(va_list list)
 	int nm, count = 0;
 
 	nm = va_arg(list, int);
-	if (nm < 0)
-	{
-		_putchar('-');
-		count++;
-		nm = -nm;
-	}
-	count += print_num(nm);
+	count += print_int(nm);
 	return (count);
 }
 
