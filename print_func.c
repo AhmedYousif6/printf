@@ -120,5 +120,5 @@ int print_hex(unsigned int nm, int up)
 			_putchar('a' + r - 10);
 		}
 	}
-	return (count);
+	return (count + 1);
 }

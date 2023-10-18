@@ -5,6 +5,11 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <limits.h>
+#include <string.h>
+#include <stdio.h>
+
+#define BUFFER_SIZE 1024
+
 
 /**
  * struct specifier - structure contain two members,
@@ -31,7 +36,7 @@ int print_bin(unsigned int nm);
 int handle_bin(va_list list);
 int handle_format(const char *format, va_list list);
 int handle_custom(va_list list);
-int handle_ui(va_list listg);
+int handle_ui(va_list list);
 int handle_octal(va_list list);
 int handle_hex(va_list list);
 int handle_hex_up(va_list list);
