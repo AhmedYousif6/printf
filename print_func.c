@@ -9,11 +9,10 @@
 int print_int(int nm)
 {
 	int count = 0;
-	const char *min;
+	const char *min = "-2147483648";
 
-	if (nm = INT_MIN)
+	if (nm == INT_MIN)
 	{
-		*min = "-2147483648";
 		while (*min)
 		{
 			_putchar(*min);
