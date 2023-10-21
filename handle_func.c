@@ -50,6 +50,12 @@ int handle_int(va_list list)
 	int nm, count = 0;
 
 	nm = va_arg(list, int);
+	if  (nm < 0)
+	{
+		_putchar('0');
+		count++;
+		nm = -nm;
+	}
 	count += print_int(nm);
 	return (count);
 }

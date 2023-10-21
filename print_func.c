@@ -18,34 +18,17 @@ int print_int(int nm)
 			_putchar(*min);
 			min++;
 			count++;
+			return (count);
 		}
 	}
 	else
 	{
-		if (nm < 0)
-		{
-			_putchar('-');
-			count++;
-			nm = -nm;
-		}
-		if (nm == 0)
-		{
-			_putchar('0');
-			count++;
-		}
-		else
-		{
 		if (nm / 10 != 0)
-		{
 			count += print_int(nm / 10);
-		}
 		_putchar('0' + nm % 10);
-		}
+		return (count);
 	}
-
-	return (count);
 }
-
 
 
 /**
