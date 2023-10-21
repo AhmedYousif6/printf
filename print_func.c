@@ -9,24 +9,12 @@
 int print_int(int nm)
 {
 	int count = 0;
-	const char *min = "-2147483648";
 
-	if (nm == INT_MIN)
+	if (nm / 10 != 0)
 	{
-		while (*min)
-		{
-			_putchar(*min);
-			min++;
-			count++;
-			return (count);
-		}
+		count += print_int(nm / 10);
 	}
-	else
-	{
-		if (nm / 10 != 0)
-			count += print_int(nm / 10);
-		_putchar('0' + nm % 10);
-	}
+	_putchar('0' + nm % 10);
 	return (count + 1);
 }
 

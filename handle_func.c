@@ -48,15 +48,28 @@ int handle_format(const char *format, va_list list)
 int handle_int(va_list list)
 {
 	int nm, count = 0;
+	const char *min = "-2147483648";
 
 	nm = va_arg(list, int);
-	if  (nm < 0)
+        if (nm == INT_MIN)
+        {
+                while (*min)
+                {
+                        _putchar(*min);
+                        min++;
+                        count++;
+                }
+        }
+	else
 	{
-		_putchar('0');
-		count++;
-		nm = -nm;
+		if (nm < 0)
+		{
+			_putchar('0');
+			count++;
+			nm = -nm;
+		}
+		count += print_int(nm);
 	}
-	count += print_int(nm);
 	return (count);
 }
 
