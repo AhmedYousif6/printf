@@ -76,7 +76,7 @@ int print_octal(unsigned int nm)
 		count += print_octal(nm / 8);
 	}
 	_putchar('0' + nm % 8);
-	return (count);
+	return (count + 1);
 }
 
 
