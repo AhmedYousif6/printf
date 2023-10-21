@@ -64,7 +64,7 @@ int handle_int(va_list list)
 	{
 		if (nm < 0)
 		{
-			_putchar('0');
+			_putchar('-');
 			count++;
 			nm = -nm;
 		}
