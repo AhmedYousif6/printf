@@ -9,19 +9,42 @@
 int print_int(int nm)
 {
 	int count = 0;
+	const char *min;
 
-	if (nm < 0)
+	if (nm = INT_MIN)
 	{
-		_putchar('-');
-		count++;
-		nm = -nm;
+		*min = "-2147483648";
+		while (*min)
+		{
+			_putchar(*min);
+			min++;
+			count++;
+		}
 	}
-	if (nm / 10 != 0)
+	else
 	{
-		count += print_int(nm / 10);
+		if (nm < 0)
+		{
+			_putchar('-');
+			count++;
+			nm = -nm;
+		}
+		if (nm == 0)
+		{
+			_putchar('0');
+			count++;
+		}
+		else
+		{
+		if (nm / 10 != 0)
+		{
+			count += print_int(nm / 10);
+		}
+		_putchar('0' + nm % 10);
+		}
 	}
-	_putchar('0' + nm % 10);
-	return (count + 1);
+
+	return (count);
 }
 
 
@@ -83,7 +106,7 @@ int print_octal(unsigned int nm)
 		count += print_octal(nm / 8);
 	}
 	_putchar('0' + nm % 8);
-	return (count + 1);
+	return (count);
 }
 
 

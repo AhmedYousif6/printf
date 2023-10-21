@@ -17,7 +17,7 @@ int handle_format(const char *format, va_list list)
 		{'i', handle_int},
 		{'b', handle_bin},
 		{'u', handle_ui},
-		{'0', handle_octal},
+		{'o', handle_octal},
 		{'x', handle_hex},
 		{'X', handle_hex_up},
 		{'\0', handle_custom}

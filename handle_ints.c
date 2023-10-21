@@ -37,7 +37,7 @@ int handle_octal(va_list list)
 
 
 /**
- * handle_hex  handle hexadecimal
+ * handle_hex - handle hexadecimal
  * @list: argument
  * Return: count of printed
 */
