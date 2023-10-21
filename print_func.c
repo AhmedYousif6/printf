@@ -26,8 +26,8 @@ int print_int(int nm)
 		if (nm / 10 != 0)
 			count += print_int(nm / 10);
 		_putchar('0' + nm % 10);
-		return (count);
 	}
+	return (count + 1);
 }
 
 
