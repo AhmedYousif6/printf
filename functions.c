@@ -40,14 +40,29 @@ int handle_string(va_list list)
 	const char *str;
 	const char *ns;
 	int count = 0;
+	unsigned char c;
+	char hexa[2];
 
 	str = va_arg(list, const char *);
 	if (str != NULL)
 	{
 		while (*str)
 		{
-			_putchar(*str);
-			count++;
+			if (*str < 32 || *str >= 127)
+			{
+				count += putchar('\\');
+				count += _putchar('x');
+				c = *str;
+				hexa[1] = "0123456789ABCDEF"[c % 16];
+				hexa[0] = "0123456789ABCDEF"[c / 16];
+
+				count += _putchar(hexa[0]);
+				count += _putchar(hexa[1]);
+			}
+			else
+			{
+			count += _putchar(*str);
+			}
 			str++;
 		}
 	}
@@ -56,8 +71,7 @@ int handle_string(va_list list)
 		ns = "(null)";
 		while (*ns)
 		{
-			_putchar(*ns);
-			count++;
+			count += _putchar(*ns);
 			ns++;
 		}
 	}

@@ -20,6 +20,7 @@ int handle_format(const char *format, va_list list)
 		{'o', handle_octal},
 		{'x', handle_hex},
 		{'X', handle_hex_up},
+		{'S', handle_string},
 		{'\0', handle_custom}
 	};
 	unsigned int i;
@@ -112,3 +113,5 @@ int handle_custom(va_list list)
 	}
 	return (count);
 }
+
+

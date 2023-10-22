@@ -71,4 +71,3 @@ int handle_hex_up(va_list list)
 }
 
 
-
