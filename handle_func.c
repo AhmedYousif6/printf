@@ -5,7 +5,7 @@
  * @format: takes specifier.
  * @list: argument.
  * Return: num of printed bites.
-*/
+ */
 
 int handle_format(const char *format, va_list list)
 {
@@ -52,15 +52,15 @@ int handle_int(va_list list)
 	const char *min = "-2147483648";
 
 	nm = va_arg(list, int);
-        if (nm == INT_MIN)
-        {
-                while (*min)
-                {
-                        _putchar(*min);
-                        min++;
-                        count++;
-                }
-        }
+	if (nm == INT_MIN)
+	{
+		while (*min)
+		{
+			_putchar(*min);
+			min++;
+			count++;
+		}
+	}
 	else
 	{
 		if (nm < 0)
@@ -97,7 +97,7 @@ int handle_bin(va_list list)
  * handle_custom - handle unrecognize specifier.
  * @list: argument.
  * Return: count of printed chars
-*/
+ */
 
 int handle_custom(va_list list)
 {

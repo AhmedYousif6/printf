@@ -50,7 +50,7 @@ int handle_string(va_list list)
 		{
 			if (*str < 32 || *str >= 127)
 			{
-				count += putchar('\\');
+				count += _putchar('\\');
 				count += _putchar('x');
 				c = *str;
 				hexa[1] = "0123456789ABCDEF"[c % 16];
